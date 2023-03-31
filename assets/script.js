@@ -74,9 +74,12 @@ function renderWeather(data) {
   }
 
   // Display recent searches 
+  const recentSearchesContainer = document.querySelector("#recentSearches");
   const recentSearches =
     JSON.parse(localStorage.getItem("recentSearches")) || [];
-  for (let i = 0; i < recentSearches.length; i++) {
+  recentSearchesContainer.innerHTML = ""; // clear the container first
+  const maxRecentSearches = 5; // set the maximum number of recent searches to display
+  for (let i = 0; i < Math.min(recentSearches.length, maxRecentSearches); i++) {
     const recentSearch = document.createElement("div");
     recentSearch.classList.add("recent-search");
     recentSearch.textContent = recentSearches[i];

@@ -22,5 +22,9 @@ WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 ```
 
-## Mock-Up
+## Screenshot
+
+![screenshot.](./assets/images/Screen%20Shot%202023-03-31%20at%204.04.38%20PM.png)
+
+## Links
 
