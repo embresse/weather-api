@@ -8,14 +8,14 @@ const currentIcon = document.querySelector("#currentIcon");
 const currentTemp = document.querySelector("#currentTemp");
 const currentWind = document.querySelector("#currentWind");
 const currentHumidity = document.querySelector("#currentHumidity");
-const recentSearches = document.querySelector("#recentSearches");
+const recentSearchesContainer = document.querySelector("#recentSearches");
 const forecastCards = document.querySelectorAll(".forecast-card");
 
 // APIs w base URL
 const apiKey = "90bdacb6c43ad76dbce6067c9a3a966e";
 const baseUrl = `https://api.openweathermap.org/data/2.5/forecast?appid=${apiKey}&units=imperial&q=`;
 
-// Handle form submission
+// event listener to handle form submission
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   const city = userInput.value;
@@ -29,16 +29,17 @@ async function getWeather(city) {
     const response = await fetch(baseUrl + city);
     const data = await response.json();
     renderWeather(data);
+
+    // Save recent search to local storage
+    const recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
+    recentSearches.unshift(data.city.name);
+    localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
   } catch (error) {
     console.error(error);
   }
-  const recentSearchesArray =
-  JSON.parse(localStorage.getItem("recentSearches")) || [];
-recentSearchesArray.unshift(data.city.name);
-localStorage.setItem("recentSearches", JSON.stringify(recentSearchesArray));
 }
 
-// Display weather data
+// Display/renders weather data
 function renderWeather(data) {
   // Display current weather
   const current = data.list[0];
@@ -72,7 +73,7 @@ function renderWeather(data) {
     ).textContent = `Humidity: ${forecast.main.humidity}%`;
   }
 
-  // Display recent searches
+  // Display recent searches 
   const recentSearches =
     JSON.parse(localStorage.getItem("recentSearches")) || [];
   for (let i = 0; i < recentSearches.length; i++) {
