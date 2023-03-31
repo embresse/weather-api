@@ -85,4 +85,7 @@ function renderWeather(data) {
     });
     recentSearchesContainer.appendChild(recentSearch);
   }
+
+     // Show forecast cards
+     forecastCards.forEach(card => card.style.display = "block");
 }
