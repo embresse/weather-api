@@ -1,0 +1,99 @@
+/* Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+  }
+  
+  /* Header Styles */
+  .jumbotron {
+    background-color: #2196f3;
+    color: white;
+    text-align: center;
+    padding: 50px;
+    margin-bottom: 0;
+  }
+  
+  .subtitle {
+    font-size: 24px;
+  }
+  
+  /* Nav bar styles */
+  nav {
+    background-color: forestgreen;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+  }
+  
+  form {
+    display: flex;
+    align-items: center;
+  }
+  
+  label {
+    margin-right: 10px;
+  }
+  
+  input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+  }
+  
+  button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+    color: #4CAF50;
+  }
+  
+ /* styles for weather */
+  .weather-containter {
+    padding: 50px;
+  }
+  
+  .current-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .currentIcon {
+    height: 50px;
+  }
+  
+ .fiveday-forecast {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .forecast-card {
+    background-color: white;
+    box-shadow: 2px 2px 5px grey;
+    padding: 20px;
+    margin-bottom: 20px;
+    width: 18%;
+  }
+  
+  .date {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .icon {
+    height: 40px;
+    margin: 10px 0;
+  }
+  
+  .cardInfo {
+    margin-bottom: 5px;
+  }
+  

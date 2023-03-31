@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <link rel="stylesheet" href = "assets/style.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header class = "jumbotron">
+        <h1>Weather Forecast Dashboard</h1>
+        <p class = "subtitle"> 5 Day Forecast</p>
+        <p id="currentDay" class="lead"></p>
+    </header>
+
+    <nav class = "nav-containter" id = "nav-containter">
+        <form id="form">
+            <label for="City" class="form-label">Search for a City:</label>
+            <input type="text" placeholder="Search" id="userInput" name="City" />
+            <button type="submit" id="searchBtn" class="btn">Search</button>
+        </form>
+        <div id="recentSearches"></div>
+    </nav>
+
+    <div class = "weather-containter">
+        <div id = "today-weather">
+            <div class = "current-header">
+            <p id = "currentCity">City</p>
+            <p id = "currentDate">Date</p>
+            <img id="currentIcon" class = "currentIcon">
+            <p id="currentTemp"> Temp: ºF</p>
+            <p id="currentWind">Wind: MPH</p>
+            <p id="currentHumidity">Humidity: %</p>
+            </div>
+        </div>
+        <h2>5 Day Weather Forecast</h2>
+        <div class ="fiveday-forecast-container" id="5day-forecast-container ">
+            <div class="forecast-card">
+                <div id='date1' class="date"></div>
+                <img id="icon1" class="icon">
+                <div id="temp1" class="cardInfo">Temp:</div>
+                <div id="wind1" class="cardInfo">Wind:</div>
+                <div id="humidity1" class="cardInfo">Humidity:</div>
+            </div>
+            <div class="forecast-card">
+                <div id='date2' class="date"></div>
+                <img id="icon2" class="icon">
+                <div id="temp2" class="cardInfo">Temp:</div>
+                <div id="wind2" class="cardInfo">Wind:</div>
+                <div id="humidity2" class="cardInfo">Humidity:</div>
+            </div>
+            <div class="forecast-card">
+                <div id="date3" class="date"></div>
+                <img  id="icon3" class="icon">
+                <div id="temp3" class="cardInfo">Temp:</div>
+                <div id="wind3" class="cardInfo">Wind:</div>
+                <div id="humidity3" class="cardInfo">Humidity:</div>
+            </div>
+            <div class="forecast-card">
+                <div id="date4" class="date"></div>
+                <img  id="icon4" class="icon">
+                <div id="temp4" class="cardInfo">Temp:</div>
+                <div id="wind4" class="cardInfo">Wind:</div>
+                <div id="humidity4" class="cardInfo">Humidity:</div>
+            </div>
+            <div class="forecast-card">
+                <div id="date5" class="date"></div>
+                <img  id="icon5" class="icon">
+                <div id="temp5" class="cardInfo">Temp:</div>
+                <div id="wind5" class="cardInfo">Wind:</div>
+                <div id="humidity5" class="cardInfo">Humidity:</div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+    crossorigin="anonymous"></script>
+    <script src = "assets/script.js"></script>
+</body>
+</html>
