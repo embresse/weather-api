@@ -31,7 +31,8 @@ async function getWeather(city) {
     renderWeather(data);
 
     // Save recent search to local storage
-    const recentSearches = JSON.parse(localStorage.getItem("recentSearches")) || [];
+    const recentSearches =
+      JSON.parse(localStorage.getItem("recentSearches")) || [];
     recentSearches.unshift(data.city.name);
     localStorage.setItem("recentSearches", JSON.stringify(recentSearches));
   } catch (error) {
@@ -41,7 +42,7 @@ async function getWeather(city) {
 
 // Display/renders weather data
 function renderWeather(data) {
-  // Display current weather
+  // Display current weather once search is submitted through event listener that activated getWeather function
   const current = data.list[0];
   const iconUrl = `http://openweathermap.org/img/w/${current.weather[0].icon}.png`;
   const date = dayjs(current.dt_txt).format("dddd, MMMM D, YYYY");
@@ -50,11 +51,13 @@ function renderWeather(data) {
   currentCity.textContent = `${data.city.name}, ${data.city.country}`;
   currentDate.textContent = date;
   currentIcon.setAttribute("src", iconUrl);
+  //math.round to round temp and wind mph to nearest integer
   currentTemp.textContent = `Temp: ${Math.round(current.main.temp)}ºF`;
   currentWind.textContent = `Wind: ${Math.round(current.wind.speed)} MPH`;
   currentHumidity.textContent = `Humidity: ${current.main.humidity}%`;
 
   // Display 5-day forecast
+  //for loop sets up 5 day forecast
   for (let i = 1; i < 6; i++) {
     const forecast = data.list[i * 8 - 1];
     const forecastCard = forecastCards[i - 1];
@@ -62,6 +65,7 @@ function renderWeather(data) {
     const forecastIconUrl = `http://openweathermap.org/img/w/${forecast.weather[0].icon}.png`;
     forecastCard.querySelector(".date").textContent = forecastDate;
     forecastCard.querySelector(".icon").setAttribute("src", forecastIconUrl);
+    // use math.round to round numbers to nearest integer
     forecastCard.querySelector("#temp" + i).textContent = `Temp: ${Math.round(
       forecast.main.temp
     )}ºF`;
@@ -73,7 +77,7 @@ function renderWeather(data) {
     ).textContent = `Humidity: ${forecast.main.humidity}%`;
   }
 
-  // Display recent searches 
+  // Display recent searches - shows 5 recent cities searched
   const recentSearchesContainer = document.querySelector("#recentSearches");
   const recentSearches =
     JSON.parse(localStorage.getItem("recentSearches")) || [];
@@ -89,6 +93,6 @@ function renderWeather(data) {
     recentSearchesContainer.appendChild(recentSearch);
   }
 
-     // Show forecast cards
-     forecastCards.forEach(card => card.style.display = "block");
+  // Show forecast cards, css set to display none, this allows cards to show once search is made
+  forecastCards.forEach((card) => (card.style.display = "block"));
 }
